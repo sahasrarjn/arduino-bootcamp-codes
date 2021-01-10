@@ -11,15 +11,11 @@ void loop()
   if ( Serial.available() > 0){
    
     char data = Serial.read();
+    // Input from 0 to 9
+    int intensity = (data - '0')*25;
     
-    if (data == '0'){
-     digitalWrite( led_pin , LOW);
-     Serial.println("LED is OFF");
-    }
-    
-    else if (data == '1'){
-      digitalWrite( led_pin , HIGH);
-      Serial.println("LED is ON");
-    }
+  analogWrite(led_pin, intensity);
+
+    Serial.println(intensity);
   }
 }
